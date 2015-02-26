@@ -1,0 +1,134 @@
+<link rel="import" href="../material-dropdown/material-dropdown.html">
+<link rel="import" href="../material-dropdown/material-dropdown-menu.html">
+
+<link rel="import" href="../material-dropdown/material-selection.html">
+
+<material-element name="custom-calculator-display">
+  <template>
+    <style>
+
+:host {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  color: #9E9E9E;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-right: 32px;
+  position: relative;
+}
+
+:host([state="error"]) {
+  background: #F50057;
+  color: #E0E0E0;
+}
+
+:host([state="result"]) {
+  background: #29B6F6;
+  color: #E0E0E0;
+}
+
+:host([state="result"]) > #output {
+  font-size: 38px;
+  font-weight: 400;
+}
+
+:host([state="result"]) > #result {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#dropdown {
+  display: none;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 64px;
+  padding: 8px 0;
+}
+
+#output {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  font-size: 112px;
+  font-weight: 100;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+}
+
+#result {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  -webkit-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  font-size: 84px;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+#result::before {
+  content: "=";
+  font-size: 38px;
+  margin-left: 24px;
+}
+
+@media (min-width: 576px) {
+  :host([mode="conferter"]) > #dropdown {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+    </style>
+
+    <!-- WIP -->
+
+    <div id="dropdown">
+      <material-dropdown-menu selected="">
+        <material-dropdown>
+          <material-dropdown-item class="selected">Base</material-dropdown-item>
+          <material-dropdown-item>Currency</material-dropdown-item>
+        </material-dropdown>
+      </material-dropdown-menu>
+
+      <material-selection state="selected" label="Base">
+
+        <!-- WIP -->
+
+      </material-selection>
+    </div>
+
+    <div id="output">
+      <content></content>
+    </div>
+
+    <div id="result"></div>
+
+  </template>
+  <script>
+
+mPULSE('custom-calculator-display');
+
+  </script>
+</material-element>

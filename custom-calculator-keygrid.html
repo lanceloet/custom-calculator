@@ -1,0 +1,77 @@
+<link rel="import" href="../custom-calculator/custom-calculator-key.html">
+
+<material-element name="custom-calculator-keygrid">
+  <template>
+    <style>
+
+:host {
+  background: #424242;
+  color: #E0E0E0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.row:last-child {
+  background: #616161;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+
+    <div class="row">
+      <custom-calculator-key>7</custom-calculator-key>
+      <custom-calculator-key>4</custom-calculator-key>
+      <custom-calculator-key>1</custom-calculator-key>
+      <custom-calculator-key>.</custom-calculator-key>
+    </div>
+
+    <div class="row">
+      <custom-calculator-key>8</custom-calculator-key>
+      <custom-calculator-key>5</custom-calculator-key>
+      <custom-calculator-key>2</custom-calculator-key>
+      <custom-calculator-key>0</custom-calculator-key>
+    </div>
+
+    <div class="row">
+      <custom-calculator-key>9</custom-calculator-key>
+      <custom-calculator-key>6</custom-calculator-key>
+      <custom-calculator-key>3</custom-calculator-key>
+      <custom-calculator-key>=</custom-calculator-key>
+    </div>
+
+    <div class="row">
+      <custom-calculator-key>DEL</custom-calculator-key>
+      <custom-calculator-key>+</custom-calculator-key>
+      <custom-calculator-key>-</custom-calculator-key>
+      <custom-calculator-key>×</custom-calculator-key>
+      <custom-calculator-key>÷</custom-calculator-key>
+    </div>
+
+  </template>
+  <script>
+
+mPULSE('custom-calculator-keygrid');
+
+  </script>
+</material-element>

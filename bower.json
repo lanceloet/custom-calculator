@@ -1,0 +1,9 @@
+{
+  "name": "custom-calculator",
+  "private": true,
+  "dependencies": {
+    "mPULSE": "Essoplerck/mPULSE#master",
+    "material-dropdown": "Essoplerck/material-dropdown#master",
+    "material-selection": "Essoplerck/material-selection#master"
+  }
+}

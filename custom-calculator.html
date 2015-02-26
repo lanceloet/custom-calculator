@@ -1,0 +1,53 @@
+<link rel="import" href="../custom-calculator/custom-calculator-display.html">
+<link rel="import" href="../custom-calculator/custom-calculator-keypad.html">
+
+<material-element name="custom-calculator">
+  <template>
+    <style>
+
+@import url(http://fonts.googleapis.com/css?family=RobotoDraft:100,300,400);
+
+:host {
+  background: #E0E0E0;
+  bottom: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "RobotoDraft", "Roboto", sans-serif;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  -webkit-tap-highlight-color: transparent;
+  top: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: 500;
+}
+
+@media (min-width: 576px) {
+  :host {
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin: 16px;
+  }
+}
+
+    </style>
+
+    <custom-calculator-display></custom-calculator-display>
+
+    <custom-calculator-keypad></custom-calculator-keypad>
+
+  </template>
+  <script>
+
+mPULSE('custom-calculator');
+
+  </script>
+</material-element>

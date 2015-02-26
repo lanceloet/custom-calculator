@@ -1,0 +1,36 @@
+<link rel="import" href="../custom-calculator/custom-calculator-drawer.html">
+<link rel="import" href="../custom-calculator/custom-calculator-keygrid.html">
+
+<material-element name="custom-calculator-keypad">
+  <template>
+    <style>
+
+:host {
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  z-index: -100;
+}
+
+    </style>
+
+    <custom-calculator-keygrid></custom-calculator-keygrid>
+
+    <custom-calculator-drawer></custom-calculator-drawer>
+
+  </template>
+  <script>
+
+mPULSE('custom-calculator-keypad');
+
+  </script>
+</material-element>
