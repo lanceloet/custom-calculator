@@ -37,7 +37,25 @@ div {
   </template>
   <script>
 
-mPULSE('custom-calculator-key');
+mPULSE('custom-calculator-key', {
+
+  createdCallback: function() {
+
+    // lisen for any clicks on key
+    this.addEventListener('click', function() {
+      var key = this.innerHTML;
+
+      // test if key is a number
+      if ((Number(key)).toString() !== 'NaN') {
+        key = Number(key);
+      };
+
+      // call the function keyPress()
+      this.offsetParent.keyPress(key);
+    });
+  }
+
+});
 
   </script>
 </material-element>
