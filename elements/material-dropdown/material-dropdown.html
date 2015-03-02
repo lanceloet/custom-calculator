@@ -1,0 +1,45 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  background: #fafafa;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: #8f8f8f;
+  display: none;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  left: 0;
+  margin: 0 4px;
+  min-height: 64px;
+  overflow: visible;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+:host-context(material-dropdown-menu[state="expanded"]) {
+  display: flex;
+}
+
+  </style>
+
+  <content></content>
+
+</template>
+<script>
+
+mPULSE('material-dropdown', {
+
+  select: function(item) {
+    this.$host.selected = item;
+    this.querySelector('.selected').classList.remove('selected');
+  }
+
+});
+
+</script>

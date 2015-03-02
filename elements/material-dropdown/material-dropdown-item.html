@@ -1,0 +1,38 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  align-items: center;
+  display: flex;
+  height: 48px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+:host(.selected) {
+  background: #d6d6d6;
+}
+
+  </style>
+
+  <content></content>
+
+</template>
+<script>
+
+mPULSE('material-dropdown-item', {
+
+  created: function() {
+    this.addEventListener('click', this.selected);
+  },
+
+  selected: function() {
+    this.$host.select(this.innerHTML);
+    this.classList.add('selected');
+  }
+
+});
+
+</script>

@@ -1,0 +1,178 @@
+<link rel="import" href="../material-dropdown/material-dropdown.html">
+<link rel="import" href="../material-dropdown/material-dropdown-item.html">
+<link rel="import" href="../material-dropdown/material-dropdown-menu.html">
+
+<link rel="import" href="../material-selection/material-selection.html">
+
+<template>
+  <style>
+
+:host {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  color: #9E9E9E;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-right: 32px;
+  position: relative;
+}
+
+:host([state="error"]) {
+  background: #F50057;
+  color: #E0E0E0;
+}
+
+:host([state="result"]) {
+  background: #29B6F6;
+  color: #E0E0E0;
+}
+
+:host([state="result"]) > #output {
+  font-size: 38px;
+  font-weight: 400;
+}
+
+:host([state="result"]) > #result {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#dropdown {
+  display: none;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 64px;
+  padding: 8px 0;
+}
+
+#output {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  font-size: 112px;
+  font-weight: 100;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+}
+
+#result {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  -webkit-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  font-size: 84px;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+#result::before {
+  content: "=";
+  font-size: 38px;
+  margin-left: 24px;
+}
+
+@media (min-width: 576px) {
+  :host([mode="conferter"]) > #dropdown {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+  </style>
+
+  <!-- WIP -->
+
+  <div id="dropdown">
+    <material-dropdown-menu selected="Base">
+
+      <material-dropdown>
+        <material-dropdown-item class="selected">Base</material-dropdown-item>
+        <material-dropdown-item>Currency</material-dropdown-item>
+      </material-dropdown>
+
+    </material-dropdown-menu>
+
+    <material-selection class="selected" label="Base">
+
+      <div>FROM</div>
+
+      <material-dropdown-menu selected="Decimal">
+        <material-dropdown>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 2">Binary</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 8">Octal</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 10" class="selected">Decimal</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 12">Duodecimal</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 16">Hexadecimal</material-dropdown-item>
+        </material-dropdown>
+      </material-dropdown-menu>
+
+      <div>TO</div>
+
+      <material-dropdown-menu selected="Decimal">
+        <material-dropdown>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 2">Binary</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 8">Octal</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 10" class="selected">Decimal</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 12">Duodecimal</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 16">Hexadecimal</material-dropdown-item>
+        </material-dropdown>
+      </material-dropdown-menu>
+
+    </material-selection>
+
+    <material-selection label="Currency">
+
+      <div>FROM</div>
+
+      <material-dropdown-menu selected="Euro">
+        <material-dropdown>
+          <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.imput = 0.890737664">Dollar</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.imput = 1" class="selected">Euro</material-dropdown-item>
+        </material-dropdown>
+      </material-dropdown-menu>
+
+      <div>TO</div>
+
+      <material-dropdown-menu selected="Euro">
+        <material-dropdown>
+          <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.output = 0.890737664">Dollar</material-dropdown-item>
+          <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.output = 1" class="selected">Euro</material-dropdown-item>
+        </material-dropdown>
+      </material-dropdown-menu>
+
+    </material-selection>
+
+  </div>
+
+  <div id="output"></div>
+
+  <div id="result"></div>
+
+</template>
+<script>
+
+mPULSE('custom-calculator-display');
+
+</script>

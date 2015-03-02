@@ -1,0 +1,171 @@
+<script>
+(function(scope) {
+
+  // base prototype
+  var base = {
+
+    // called when an instance was inserted into the document
+    attachedCallback: function() {
+      this.template();
+
+      this.$host = this.offsetParent || this.parentElement;
+      this.$node = function(element) {
+        return this.parentElement.querySelector(element);
+      };
+      this.$ = function(element) {
+        return this.shadowRoot.querySelector(element);
+      };
+
+      this.attached();
+    },
+
+    attached: function() {
+    },
+
+    // called when an instance of the element is created
+    createdCallback: function() {
+      this.created();
+    },
+
+    created: function() {
+    },
+
+    // called when an instance was removed from the document
+    detachedCallback: function() {
+      this.detached();
+    },
+
+    detached: function() {
+    },
+
+    // combine prototypes
+    extend: function(prototype, property) {
+      // check if both an base and a new prototype is defined
+      if (prototype && property) {
+        // colect all base prototypes
+        Object.getOwnPropertyNames(property).forEach(function(value) {
+          var description = Object.getOwnPropertyDescriptor(property, value);
+
+          if (description) {
+             Object.defineProperty(prototype, value, description);
+          }
+        });
+      }
+      return prototype || property
+    },
+
+    template: function() {
+      var temp = properties[this.localName].template;
+      var root = this.createShadowRoot();
+      var node = document.importNode(temp.content, true);
+      root.appendChild(node);
+    },
+
+    $$: function(element) {
+      return this.shadowRoot.querySelectorAll(element);
+    },
+
+    // base HTML prototype
+    __proto__: HTMLElement.prototype
+
+  };
+
+  // exports
+  scope.base = base;
+
+})(this);
+
+(function(scope) {
+  window.mPULSE = function(name, prototype) {
+    var script = document.currentScript;
+    var template = script.parentNode && script.parentNode.querySelector('template')
+
+    var property = {};
+
+    if (template) {
+      property.template = template;
+    }
+
+    property.prototype = prototype || {};
+
+    /*properties.__proto__ = base;
+    if (prototype.extends) {
+      prototype.__proto__ = prototype.extends;
+    }
+
+    if (getPrototype(name)) {
+      throw name + 'has already a custom prototype';
+    }
+
+    document.registerElement(name, {
+      prototype: properties.prototype
+    })*/
+
+    // cache the prototype
+    registerProperty(name, property);
+
+    document.addEventListener('mPULSE-ready', function() {
+      scope.prototype.register(name);
+    });
+  };
+
+  // storage for prototypes
+  var properties = {};
+
+  // add a prototype to storage
+  function registerProperty(name, property) {
+    return properties[name] = property || {}
+  };
+
+  // return prototype for name
+  function getProperty(name) {
+    return properties[name];
+  };
+
+  scope.properties = properties;
+})(this);
+
+(function(scope) {
+  var prototype = {
+    register: function(name) {
+      // build prototype for element
+      this.buildPrototype(name);
+      // register the prototype
+      this.registerPrototype(name);
+    },
+    buildPrototype: function(name) {
+      // WIP!
+      this.prototype = scope.properties[name].prototype;
+      this.prototype.__proto__ = base;
+      // alow the custom prototype to acces its content
+      if (this.prototype.registerCallback) {
+        this.prototype.registerCallback(this);
+      }
+    },
+    registerPrototype: function(name) {
+      // define the prototype
+      var options = {
+        prototype: this.prototype
+      };
+      // register our custom element
+      document.registerElement(name, options);
+    }
+  };
+  scope.prototype = prototype;
+})(this);
+
+(function(scope) {
+  document.addEventListener('DOMContentLoaded', function() {
+
+    document.dispatchEvent(
+      new CustomEvent('mPULSE-ready', {bubbles: true})
+    );
+
+    document.body.removeAttribute('unresolved');
+
+    // mPULSE has loaded.
+    console.log('%cmPULSe has loaded','font-size:2em; color:#009688;');
+  });
+
+})(this);
+</script>

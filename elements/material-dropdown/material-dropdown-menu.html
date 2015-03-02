@@ -1,0 +1,74 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  height: 48px;
+  outline: none;
+  position: relative;
+  min-width: 168px;
+}
+
+#label {
+  border-bottom: 1px solid #616161;
+  font-size: 16px;
+  height: 32px;
+  margin: 8px 4px;
+  padding: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+  </style>
+
+  <content select="material-dropdown"></content>
+
+  <div id="label"><content></content></div>
+
+</template>
+<script>
+
+mPULSE('material-dropdown-menu', {
+
+  attached: function() {
+    this.selected = this.getAttribute('selected');
+    this.$('#label').innerHTML = this.selected;
+  },
+
+  close: function() {
+    this.removeAttribute('state');
+    this.setAttribute('selected', this.selected);
+    this.$('#label').innerHTML = this.selected;
+    if (this.$node('material-selection')) {
+      this.$node('material-selection.selected').classList.remove('selected');
+      this.$node('material-selection[label="' + this.selected + '"]').classList.add('selected');
+    }
+  },
+
+  created: function() {
+    this.addEventListener('click', this.toggle);
+  },
+
+  open: function() {
+    this.setAttribute('state', 'expanded');
+  },
+
+  toggle: function() {
+    if (this.hasAttribute('state', 'expanded')) {
+      this.close();
+    } else {
+      this.open();
+    }
+  },
+
+  selected: ''
+
+});
+
+</script>

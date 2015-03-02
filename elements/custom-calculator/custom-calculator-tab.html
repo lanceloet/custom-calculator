@@ -1,0 +1,40 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  align-items: center;
+  color: #E0E0E0;
+  display: flex;
+  font-size: 18px;
+  height: 56px;
+  padding-left: 12px;
+}
+
+:host(.selected) {
+  border-left: 2px solid #E4E4E4;
+  padding-left: 10px;
+}
+
+  </style>
+
+  <content></content>
+
+</template>
+<script>
+
+mPULSE('custom-calculator-tab', {
+
+  created: function() {
+    this.addEventListener('click', this.selected);
+  },
+
+  selected: function() {
+    this.$host.select(this.innerHTML);
+    this.classList.add('selected');
+  }
+
+});
+
+</script>

@@ -1,0 +1,65 @@
+<link rel="import" href="../custom-calculator/custom-calculator-tab.html">
+
+<template>
+  <style>
+
+:host {
+  background: #00BFA5;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 28px;
+}
+
+.handlebar {
+  bottom: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+@media (min-width: 768px) {
+  :host {
+    -webkit-flex: 3;
+        -ms-flex: 3;
+            flex: 3;
+  }
+
+  .handlebar {
+    display: none;
+  }
+}
+
+  </style>
+
+  <div class="handlebar"></div>
+
+  <div id="tabs">
+    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.removeAttribute('mode')" class="selected">Default</custom-calculator-tab>
+    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.setAttribute('mode', 'conferter')">Conferter</custom-calculator-tab>
+    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.setAttribute('mode', 'payment')">Payment</custom-calculator-tab>
+    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.removeAttribute('mode')">About</custom-calculator-tab>
+  </div>
+
+</template>
+<script>
+
+mPULSE('custom-calculator-drawer', {
+
+  attached: function() {
+    this.selected = this.getAttribute('selected');
+  },
+
+  select: function() {
+    this.$('.selected').classList.remove('selected');
+    this.setAttribute('selected', this.selected);
+  },
+
+  selected: ''
+
+});
+
+</script>

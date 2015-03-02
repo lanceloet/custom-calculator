@@ -1,0 +1,59 @@
+<link rel="import" href="../custom-calculator/custom-calculator-drawer.html">
+<link rel="import" href="../custom-calculator/custom-calculator-keygrid.html">
+
+<template>
+  <style>
+
+:host {
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  z-index: -100;
+}
+
+  </style>
+
+  <custom-calculator-keygrid></custom-calculator-keygrid>
+
+  <custom-calculator-drawer selected="Default"></custom-calculator-drawer>
+
+</template>
+<script>
+
+mPULSE('custom-calculator-keypad', {
+
+  keyPress: function(key) {
+    // clear if a result is shown and the event hasn't been triggered by the '=' key
+    if (this.$host.result && key !== '=') {
+      // reset the calculator
+      this.$host.clear();
+    }
+
+    // cicide what action to trigger
+    if (key === '=') {
+      // calculate the memory
+      this.$host.math();
+    } else if (key === 'DEL') {
+      // delete the last digit
+      this.$host.del();
+    } else if (key < this.$host.base.imput || typeof key == 'string') {
+      // add the current key to the memory
+      this.$host.memory.push(key);
+    }
+
+    // update the display so it shows the output/result
+    this.$host.update();
+  }
+
+});
+
+</script>
