@@ -8,7 +8,6 @@
   <style>
 
 :host {
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   color: #9E9E9E;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33,7 +32,7 @@
   color: #E0E0E0;
 }
 
-:host([state="result"]) > #output {
+:host([state="result"]) > #memory {
   font-size: 38px;
   font-weight: 400;
 }
@@ -53,7 +52,7 @@
   padding: 8px 0;
 }
 
-#output {
+#memory {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
@@ -93,7 +92,7 @@
 }
 
 @media (min-width: 576px) {
-  :host([mode="conferter"]) > #dropdown {
+  :host([mode="Conferter"]) > #dropdown {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -114,29 +113,29 @@
 
     </material-dropdown-menu>
 
-    <material-selection class="selected" label="Base">
+    <material-selection label="Base" class="selected">
 
       <div>FROM</div>
 
-      <material-dropdown-menu selected="Decimal">
+      <material-dropdown-menu id="imput" selected="Decimal">
         <material-dropdown>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 2">Binary</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 8">Octal</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 10" class="selected">Decimal</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 12">Duodecimal</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.imput = 16">Hexadecimal</material-dropdown-item>
+          <material-dropdown-item>Binary</material-dropdown-item>
+          <material-dropdown-item>Octal</material-dropdown-item>
+          <material-dropdown-item class="selected">Decimal</material-dropdown-item>
+          <material-dropdown-item>Duodecimal</material-dropdown-item>
+          <material-dropdown-item>Hexadecimal</material-dropdown-item>
         </material-dropdown>
       </material-dropdown-menu>
 
       <div>TO</div>
 
-      <material-dropdown-menu selected="Decimal">
+      <material-dropdown-menu id="output" selected="Decimal">
         <material-dropdown>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 2">Binary</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 8">Octal</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 10" class="selected">Decimal</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 12">Duodecimal</material-dropdown-item>
-          <material-dropdown-item onClick="this.$host.$host.$host.$host.base.output = 16">Hexadecimal</material-dropdown-item>
+          <material-dropdown-item>Binary</material-dropdown-item>
+          <material-dropdown-item>Octal</material-dropdown-item>
+          <material-dropdown-item class="selected">Decimal</material-dropdown-item>
+          <material-dropdown-item>Duodecimal</material-dropdown-item>
+          <material-dropdown-item>Hexadecimal</material-dropdown-item>
         </material-dropdown>
       </material-dropdown-menu>
 
@@ -146,7 +145,7 @@
 
       <div>FROM</div>
 
-      <material-dropdown-menu selected="Euro">
+      <material-dropdown-menu id="imput" selected="Euro">
         <material-dropdown>
           <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.imput = 0.890737664">Dollar</material-dropdown-item>
           <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.imput = 1" class="selected">Euro</material-dropdown-item>
@@ -155,7 +154,7 @@
 
       <div>TO</div>
 
-      <material-dropdown-menu selected="Euro">
+      <material-dropdown-menu id="output" selected="Euro">
         <material-dropdown>
           <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.output = 0.890737664">Dollar</material-dropdown-item>
           <material-dropdown-item onClick="this.$host.$host.offsetParent.$host.conferter.output = 1" class="selected">Euro</material-dropdown-item>
@@ -166,7 +165,7 @@
 
   </div>
 
-  <div id="output"></div>
+  <div id="memory"></div>
 
   <div id="result"></div>
 

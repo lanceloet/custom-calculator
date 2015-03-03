@@ -86,7 +86,10 @@ mPULSE('custom-calculator',{
     this.result = '';
 
     // check if the calculator is not in conferter mode
-    if (this.$('custom-calculator-display').getAttribute('mode') !== 'conferter') {
+    if (this.$('custom-calculator-display').getAttribute('mode', 'Conferter')) {
+      var selection = this.$('custom-calculator-display /deep/ material-selection.selected');
+      console.log(selection.querySelector('#imput').getAttribute('selected'));
+      console.log(selection.querySelector('#output').getAttribute('selected'));
       // reset the base
       this.base = {
         imput: 10,
@@ -148,7 +151,7 @@ mPULSE('custom-calculator',{
   // update the calculator
   update: function() {
     // set the inner HTML of #output to memory
-    this.$('custom-calculator-display /deep/ #output').innerHTML = this.memory.join('');
+    this.$('custom-calculator-display /deep/ #memory').innerHTML = this.memory.join('');
 
     // check if there's a '0' at the beginging of the memory
     if (this.memory[0] === 0) {
@@ -166,7 +169,7 @@ mPULSE('custom-calculator',{
       this.$('custom-calculator-display').setAttribute('state', 'error');
 
       // set the inner HTML of #output to Error...
-      this.$('custom-calculator-display /deep/ #output').innerHTML = 'Error...';
+      this.$('custom-calculator-display /deep/ #memory').innerHTML = 'Error...';
     } else {
       // set the inner HTML of #result to result
       this.$('custom-calculator-display /deep/ #result').innerHTML = this.result;

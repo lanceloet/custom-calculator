@@ -1,0 +1,50 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  background: #EEEEEE;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  color: #262626;
+  display: block;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+:host(:first-child) {
+  margin-top: 0;
+}
+
+::content header {
+  align-items: flex-end;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #00BCD4;
+  color: #EEEEEE;
+  display: flex;
+  font-size: 24px;
+  height: 128px;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+::content div {
+  margin: 16px 8px;
+}
+
+::content .row {
+  display: flex;
+  flex-direction: row;
+}
+
+  </style>
+
+  <content></content>
+
+</template>
+<script>
+
+mPULSE('material-card');
+
+</script>

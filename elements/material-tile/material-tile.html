@@ -1,0 +1,25 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  border-left: 1px solid #000;
+  display: flex;
+  flex: 1;
+}
+
+:host(:first-child) {
+  border-left: none;
+}
+
+  </style>
+
+  <content></content>
+
+</template>
+<script>
+
+mPULSE('material-tile');
+
+</script>

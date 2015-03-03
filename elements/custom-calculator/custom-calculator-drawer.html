@@ -1,5 +1,9 @@
 <link rel="import" href="../custom-calculator/custom-calculator-tab.html">
 
+<link rel="import" href="../material-card/material-card.html">
+<link rel="import" href="../material-modal/material-modal.html">
+<link rel="import" href="../material-tile/material-tile.html">
+
 <template>
   <style>
 
@@ -8,6 +12,18 @@
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
   position: relative;
   width: 28px;
+}
+
+.footer {
+  align-items: center;
+  bottom: 0;
+  color: #E0E0E0;
+  display: flex;
+  font-size: 18px;
+  height: 56px;
+  left: 0;
+  position: absolute;
+  right: 0;
 }
 
 .handlebar {
@@ -38,11 +54,46 @@
   <div class="handlebar"></div>
 
   <div id="tabs">
-    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.removeAttribute('mode')" class="selected">Default</custom-calculator-tab>
-    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.setAttribute('mode', 'conferter')">Conferter</custom-calculator-tab>
-    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.setAttribute('mode', 'payment')">Payment</custom-calculator-tab>
-    <custom-calculator-tab onClick="this.$host.$host.previousElementSibling.removeAttribute('mode')">About</custom-calculator-tab>
+    <custom-calculator-tab class="selected">Default</custom-calculator-tab>
+    <custom-calculator-tab>Conferter</custom-calculator-tab>
+    <custom-calculator-tab>Payment</custom-calculator-tab>
   </div>
+
+  <div class="footer">About</div>
+
+  <material-modal state="expanded">
+    <material-card>
+      <header>ABOUT THIS PROJECT</header>
+      <div>
+        <p>Dit project is gebouwd met een paar van de nieuwste bouw-materialen die nu beschriktbaar zijn voor front-end web develepers.<br>Dit project maakt zwaar gebruik van de web-conponents API. Deze api is uit 4 delen opgebowed</p>
+        <ul>
+          <li>Custom HTML Elements</li>
+          <li>HTML Imports</li>
+          <li>ShadowDom</li>
+          <li>Templates</li>
+        </ul>
+        <p>Ook maakt dit project gebruik van een Service worker voor offline ondersteuning.</p>
+      </div>
+    </material-card>
+
+    <material-card>
+      <header>Authors</header>
+      <div class="row">
+
+        <material-tile>
+          <p>Mijn naam is Charlotte, ik ben 15 jaar oud en ik woon in Loenen aan de Vecht.<br>Ik heb twee broers, Wouter en Derek.<br>Ik zit nu in 4VWO op Broklede en ik volg een N&T-profiel met het vak informatica. Mijn favoriete schoolvak is gym.
+<br>Mijn lievelingseten is pannenkoeken.<br>Mijn hobby’s zijn pianospelen en hockeyen.<br>In mijn vakantie ga ik het liefst naar een warm land, op wintersport of lekker niks doen.</p>
+        </material-tile>
+
+        <material-tile>
+          <p>Mijn naam is Daan, ik ben 16 jaar en ik woon in Maarssen.<br>Ik heb een broer en een zus, Luuk en Annelotte.<br>Ik zit op Broklede in 4VWO en ik doe een E&M profiel.<br>Mijn hobby's zijn gamen en lezen.</p>
+        </material-tile>
+
+        <material-tile>test</material-tile>
+
+      </div>
+    </material-card>
+  </material-modal>
 
 </template>
 <script>
@@ -51,11 +102,16 @@ mPULSE('custom-calculator-drawer', {
 
   attached: function() {
     this.selected = this.getAttribute('selected');
+    this.$('.footer').addEventListener('click', function() {
+      this.nextElementSibling.toggle();
+    })
   },
 
-  select: function() {
+  select: function(label) {
+    this.selected = label;
     this.$('.selected').classList.remove('selected');
     this.setAttribute('selected', this.selected);
+    this.$host.previousElementSibling.setAttribute('mode', this.selected)
   },
 
   selected: ''

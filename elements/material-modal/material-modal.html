@@ -1,0 +1,66 @@
+<link rel="import" href="../mPULSE/mPULSE.html">
+
+<template>
+  <style>
+
+:host {
+  left: 0;
+  display: none;
+  flex-direction: column;
+  padding: 32px;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 800;
+}
+
+:host([state="expanded"]) {
+  display: flex;
+}
+
+:host::before {
+  background: #000000;
+  bottom: 0;
+  cursor: auto;
+  content: "";
+  left: 0;
+  opacity: 0.4;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -50;
+}
+
+  </style>
+
+  <content></content>
+
+</template>
+<script>
+
+mPULSE('material-modal', {
+  attached: function() {
+    this.addEventListener('click', function() {
+      this.toggle()
+    })
+  },
+
+  close: function() {
+    this.removeAttribute('state');
+  },
+
+  open: function() {
+    this.setAttribute('state', 'expanded');
+  },
+
+  toggle: function() {
+    if (this.hasAttribute('state', 'expanded')) {
+      this.close();
+    } else {
+      this.open();
+    }
+  },
+});
+
+</script>

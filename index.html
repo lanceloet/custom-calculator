@@ -2,20 +2,20 @@
 <html primary="light-blue" accent="teal">
   <head>
 
-    <title>mPULSE template</title>
+    <title>custom-calculator</title>
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="theme-color" content="#424242">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <link rel="import" href="elements/custom-calculator/custom-calculator.html">
 
     <style>
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500);
-@import url(http://fonts.googleapis.com/css?family=RobotoDraft:100,300,400);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500);
+@import url(http://fonts.googleapis.com/css?family=RobotoDraft:100,300,400);*/
 
 *, *:after, *:before, html /deep/ * {
   box-sizing: border-box;
@@ -54,12 +54,12 @@ body[unresolved] {
 
     <custom-calculator></custom-calculator>
 
-    <script>
+    <!--<script>
 
 // check if the serviceworker is avalible
 if ('serviceWorker' in navigator) {
   // serviceworker is suported
-  navigator.serviceWorker.register('/serviceworker.js', {
+  navigator.serviceWorker.register('serviceworker.js', {
     scope: '/'
   }).then(function(reg) {
     // registration was successful
@@ -73,6 +73,6 @@ if ('serviceWorker' in navigator) {
   console.error('ServiceWorker unavaileble, Please update to a newer browser');
 }
 
-    </script>
+    </script>-->
   </body>
 </html>
