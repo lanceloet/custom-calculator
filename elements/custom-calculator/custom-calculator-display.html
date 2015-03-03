@@ -43,6 +43,10 @@
   display: flex;
 }
 
+#payment {
+  display: none;
+}
+
 #dropdown {
   display: none;
   -webkit-justify-content: space-between;
@@ -98,7 +102,7 @@
     display: flex;
   }
 
-  :host([mode="Payment"]) {
+  :host([mode="Payment"]) > #payment {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
